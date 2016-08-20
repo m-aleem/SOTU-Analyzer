@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h2>State of the Union Address - Word Analysis</h2>
+
+<p>
+	The State of the Union Address - Word Analysis program assess the content of the State of the Union Addresses and Messages which were delivered as speeches from the year 1913 onwards. The text from the speeches is sourced from 
+	<a href="http://www.presidency.ucsb.edu/sou.php">The American Presidency Project</a>.
+</p>
+
+<h3>General Analysis</h3>
+
+<p>
+   The following sections analyzes total word usage in the whole Sate of the Union (SOTU) address. First, we look at the overall length of the addresses. Note that there was not necessarily a SOTU address every year from 1913 onward (see Appendix for detailed list). The years where there was an address is marked, with a different marker denoting a Democratic president (Blue Triangle) or Republican (Red Circle).
+</p>
+
+<center>
+   <b>Total Number of Words</b>
+   <img src="{{ fig_TotalWordsCount }}" style="width: 7in;">
+   </center>
+<p>
+	<b> Longest:</b> {{ longestWORDS }} words by {{ longestPRES }} ({{ longestPARTY }}) in {{ longestYEAR }} <br />
+	<b> Shortest:</b> {{ shortestWORDS }} words by {{ shortestPRES }} ({{ shortestPARTY }}) in {{ shortestYEAR }}<br />
+   <b> Average: </b> {{ averageLength }}  words<br />
+   <b> Democratic Average: </b> {{ demAverageLength }} words<br />
+   <b> Republican Average: </b> {{ repAverageLength }} words<br />
+</p>
+
+<p>
+Next, we look at the speechs in historical context by overlapping a plot of speech length with historical event lines. For ease of reading, the Democratic/Republican differentiating markers have been replaced with simple black circles for all speeches.
+</p>
+
+<center>
+   <b>Total Words Used and Hisorical Events</b>
+   <img src="{{ fig_TotalWordsCountWithHist }}" style="width: 7in;">
+</center>
+
+<p>
+   Note that the SOTU is typically delivered at the beginning of the year, thus the events of the <i>previous</i> year impact the speech of the following year.
+</p>
+
+<p style="page-break-before: always" ></p>
+
+<p>
+   Next we consider the unique words used in each speech. Each speech is analyzed without punctuation and capitalization, to count the total number of unique words.
+</p>
+
+<center>
+   <b>Total Number of Unique Words Used</b>
+   <img src="{{ fig_TotalUniqueCount }}" style="width: 7in;">
+</center>
+
+<p>
+   <b>Least number of Unique Words in an address:</b> {{ uniquewordsMIN }} unique words by {{ uniquewordsMINPRES }} ({{ uniquewordsMINPARTY }}) in {{ uniquewordsMINYEAR }} <br />
+   <b>Most number of Unique Words in an address:</b> {{ uniquewordsMAX }} unique words by {{ uniquewordsMAXPRES }} ({{ uniquewordsMAXPARTY }}) in {{ uniquewordsMAXYEAR }}
+</p>
+
+   <p>
+  There have been {{ totUniqueWords }} total unique words in all the SOTU addresses. We can also look at the unique word usage on a party level.
+  </p>
+
+<center>
+   <b>Total Unique Words Used by Each Political Party</b>
+   <img src="{{ fig_TotalUniquePartyCount }}" style="width: 7in;">
+</center>
+
+<p>
+It makes more sense to normalize unique word usage by the length of the speech. We can look at it as a percentage of the total speech length, both for individual addresses and for each party.
+</p>
+
+<blockquote><i> For Each Address: </i>Unique Words % = (Total Number of Unique Words) / (Total Number of Words) * 100</blockquote>
+
+<blockquote><i> For Each Party: </i>Unique Words % = (Total Number of Unique Words Used by Party) / (Total Number of Words Delivered by Party) * 100</blockquote>
+
+
+<center>
+   <b>Unique Words Used as Percentage of Speech</b>
+   <img src="{{ fig_UniquePer }}" style="width: 6.5in;">
+
+   <b>Unique Words Used as Percentage of Speech for Each Party</b>
+   <img src="{{ fig_UniquePerParty }}" style="width: 6in;">
+</center>
+
+<p style="page-break-before: always" ></p>
+
+<h3>Selected Word: "{{ buzzword }}" Analysis</h3>
+
+<p>
+The selected word to analyze is "{{ buzzword }}". The following section analyzes usage of this word 
+</p>
+
+<center>
+   <b>Total Usage of "{{buzzword}}"</b>
+   <img src="{{ fig_BuzzwordTotal }}" style="width: 7in;">
+</center>
+
+<p>
+  <b> Total Usage: </b> {{buzzwordTOTAL}} times <br />
+  <b> Most Used: </b> {{ buzzwordMAX }} times by {{ buzzwordPRES }} ({{ buzzwordMAXPARTY }}) in {{ buzzwordMAXYEAR }}
+</p>
+
+<p>
+   Again, this is actually more sensible to look at normalized by the length of the speech. Once again we can calculate a percentage usage for each address for the selected.
+</p>
+
+<blockquote>"{{ buzzword }}" Use % = (Total Number of times "{{ buzzword }}" Used) / (Total Number of Words) * 100</blockquote>
+
+
+<center>
+   <b>Perentage of Total Speech Usage of "{{ buzzword }}"</b>
+   <img src="{{ fig_BuzzwordPer }}" style="width: 7in;">
+</center>
+
+<p>
+  <b> Highest % Used: </b> {{ buzzwordpMAX }}% by {{ buzzwordpPRES }} ({{ buzzwordpMAXPARTY }}) in {{ buzzwordpMAXYEAR }}  
+</p>
+
+<p style="page-break-before: always" ></p>
+
+<h3>Appendix</h3>
+
+{{ appendixdata }}
+</body>
+</html>
