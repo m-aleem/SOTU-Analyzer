@@ -223,9 +223,9 @@ plt.xlim([np.min(map(int, years)),np.max(map(int, years))])
 seen = set()
 for x, y, label in zip(years, uniquewords, labels):
    if label not in seen:
-      plt.bar([x], [y], 0.5, color=label_dict.get(label), label=legend_dict.get(label))
+      plt.bar([float(x)], [float(y)], 0.5, color=label_dict.get(label), label=legend_dict.get(label),  align='center')
    else:
-      plt.bar([x], [y], 0.5, color=label_dict.get(label))
+      plt.bar([float(x)], [float(y)], 0.5, color=label_dict.get(label),  align='center')
    seen.add(label)
 
 
@@ -279,8 +279,8 @@ fig_TotalUniquePartyCount = plt.figure()
 ax1 = plt.subplot2grid((1,1), (0,0), colspan=1)
 plt.sca(ax1)
 
-plt.bar([1], [demUniqueWords], 0.5, color='b', label='Democratic')
-plt.bar([2], [repUniqueWords], 0.5, color='r', label='Republican')
+plt.bar([1], [demUniqueWords], 0.5, color='b', label='Democratic', align='center')
+plt.bar([2], [repUniqueWords], 0.5, color='r', label='Republican', align='center')
 ax1.get_xaxis().set_visible(False)
 
 ax1.text(1.15, demUniqueWords + 200, str(demUniqueWords), color='k', fontweight='bold')
@@ -310,9 +310,9 @@ plt.xlim([np.min(map(int, years)),np.max(map(int, years))])
 seen = set()
 for x, y, label in zip(years, uniquePercent, labels):
     if label not in seen:
-        plt.bar([x], [y], color=label_dict.get(label), label=legend_dict.get(label))
+        plt.bar([float(x)], [float(y)], color=label_dict.get(label), label=legend_dict.get(label), align='center')
     else:
-        plt.bar([x], [y], color=label_dict.get(label))
+        plt.bar([float(x)], [float(y)], color=label_dict.get(label), align='center')
     seen.add(label)
     
 plt.legend(loc=3,scatterpoints=1, mode="expand", ncol=2, bbox_to_anchor=(0., 1.0, 1., 0.0))
@@ -342,8 +342,8 @@ fig_UniquePerParty = plt.figure()
 ax1 = plt.subplot2grid((1,1), (0,0), colspan=1)
 plt.sca(ax1)
 
-plt.bar([1], [demUniquePercent], 0.5, color='b', label='Democratic')
-plt.bar([2], [repUniquePercent], 0.5, color='r', label='Republican')
+plt.bar([1], [demUniquePercent], 0.5, color='b', label='Democratic', align='center')
+plt.bar([2], [repUniquePercent], 0.5, color='r', label='Republican', align='center')
 ax1.get_xaxis().set_visible(False)
 
 ax1.text(1.25, demUniquePercent + .25, str('%.0f' % demUniquePercent), color='k', fontweight='bold')
@@ -441,7 +441,7 @@ for i in range(0,len(buzzword)):
    plt.legend(loc=3,scatterpoints=1, mode="expand", ncol=2, bbox_to_anchor=(0., 1.0, 1., 0.0))
    fig3.savefig(dir_path + '/' + str(i) + '_' + 'fig2.png')
    
-   f.write(" <center> <h3> Perentage of Total Speech Usage of '" + buzzword[i] + "'</h3>")
+   f.write(" <center> <h3> Percentage of Total Speech Usage of '" + buzzword[i] + "'</h3>")
    f.write(" <img src = '" + dir_path + "/" + str(i) + "_" + "fig2.png'> </center>")
 
    f.write("<b>Highest % Used:</b> " + str(np.round(buzzp_max_value,2)) + "% by " + str(presidents[buzzp_max_index]) + " (" + str(parties[buzzp_max_index][0:1]) + ") in " + str(years[buzzp_max_index]))
